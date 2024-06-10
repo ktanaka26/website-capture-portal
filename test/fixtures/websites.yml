@@ -1,0 +1,10 @@
+# test/fixtures/websites.yml
+one:
+  address: http://example.com
+  status: 200
+  last_accessed_at: <%= Time.now %>
+
+two:
+  address: http://example.org
+  status: 500
+  last_accessed_at: <%= Time.now %>

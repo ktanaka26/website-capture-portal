@@ -1,0 +1,66 @@
+version: '3.9'
+
+x-rails-image: &rails-image ghcr.io/ktanaka26/rails-website-capture
+x-default-environment: &default-environment
+  TZ: Asia/Tokyo
+
+services:
+  web:
+    image: *rails-image
+    build: .
+    restart: always
+    environment:
+      <<: *default-environment
+    env_file:
+      - .env
+      - .env_master_key
+    ports:
+      - 3000:3000
+    depends_on:
+      redis:
+        condition: service_healthy
+      db:
+        condition: service_started
+
+  redis:
+    image: redis:6.2.0
+    environment:
+      <<: *default-environment
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    ports:
+      - 6379:6379
+
+
+  sidekiq:
+    image: *rails-image
+    build: .
+    restart: always
+    environment:
+      <<: *default-environment
+    env_file:
+      - .env
+      - .env_master_key
+    command: bundle exec sidekiq -C /app/config/sidekiq.yml
+    depends_on:
+      redis:
+        condition: service_healthy
+      db:
+        condition: service_started
+
+  db:
+    image: postgres:15.4
+    environment:
+      <<: *default-environment
+    env_file:
+      - .env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+volumes:
+  postgres_volume:

@@ -1,0 +1,107 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-06-10T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2021.6.0",
+  "resources": [
+    {
+      "_id": "req_123456",
+      "parentId": "fld_123456",
+      "modified": 0,
+      "created": 0,
+      "url": "http://localhost:3000/api/v1/urls",
+      "name": "Create URL",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"url\": { \"address\": \"http://example.com\" }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1,
+      "isPrivate": false
+    },
+    {
+      "_id": "req_123457",
+      "parentId": "fld_123456",
+      "modified": 0,
+      "created": 0,
+      "url": "http://localhost:3000/api/v1/urls",
+      "name": "Get URLs",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -2,
+      "isPrivate": false
+    },
+    {
+      "_id": "req_123458",
+      "parentId": "fld_123456",
+      "modified": 0,
+      "created": 0,
+      "url": "http://localhost:3000/api/v1/screenshots",
+      "name": "Get Screenshots",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -3,
+      "isPrivate": false
+    },
+    {
+      "_id": "req_123459",
+      "parentId": "fld_123456",
+      "modified": 0,
+      "created": 0,
+      "url": "http://localhost:3000/api/v1/settings",
+      "name": "Update Settings",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"setting\": { \"interval\": 60, \"retention\": 5 }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -4,
+      "isPrivate": false
+    },
+    {
+      "_id": "fld_123456",
+      "parentId": "wrk_123456",
+      "modified": 0,
+      "created": 0,
+      "name": "API Requests",
+      "description": "",
+      "environment": {},
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_123456",
+      "parentId": null,
+      "modified": 0,
+      "created": 0,
+      "name": "Screenshot App",
+      "description": "",
+      "_type": "workspace"
+    }
+  ]
+}

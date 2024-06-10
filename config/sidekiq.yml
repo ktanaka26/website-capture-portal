@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+  - screenshots
+
+:scheduler:
+  :schedule:
+    take_screenshots:
+      cron: "*/3 * * * *" # 毎時0分に実行
+      class: "TakeScreenshotsWorker"

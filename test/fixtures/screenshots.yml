@@ -1,0 +1,12 @@
+# test/fixtures/screenshots.yml
+one:
+  website: one
+  file_path: path/to/screenshot1.png
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+two:
+  website: two
+  file_path: path/to/screenshot2.png
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
