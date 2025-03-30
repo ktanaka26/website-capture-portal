@@ -1,10 +1,24 @@
 development:
-  adapter: async
+  adapter: redis
+  url: <%= ENV["REDIS_URL"] %>
+  username: <%= ENV['REDIS_USERNAME'] || Rails.application.credentials[:redis][:username]%>
+  password: <%= ENV['REDIS_PASSWORD'] || Rails.application.credentials[:redis][:password]%>
+  ssl: true
+  ssl_params:
+    cert: <%= ENV['REDIS_CERT_FILE'] %>
+    key: <%= ENV['REDIS_KEY_FILE'] %>
+    ca_file: <%= ENV['REDIS_CA_FILE'] %>
 
 test:
   adapter: test
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: rails_website_capture_production
+  url: <%= ENV["REDIS_URL"] %>
+  username: <%= ENV['REDIS_USERNAME'] || Rails.application.credentials[:redis][:username]%>
+  password: <%= ENV['REDIS_PASSWORD'] || Rails.application.credentials[:redis][:password]%>
+  ssl: true
+  ssl_params:
+    cert: <%= ENV['REDIS_CERT_FILE'] %>
+    key: <%= ENV['REDIS_KEY_FILE'] %>
+    ca_file: <%= ENV['REDIS_CA_FILE'] %>

@@ -31,6 +31,9 @@
 
 .env
 .env_master_key
+.envrc
+
+/certs/*
 
 /db/*.sqlite3
 
